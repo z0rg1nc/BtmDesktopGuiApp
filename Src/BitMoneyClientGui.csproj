@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D72B984-02F9-4E61-8598-FDE9E29555F7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BtmI2p.BitMoneyClient.Gui</RootNamespace>
+    <AssemblyName>BitMoneyClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RestorePackages>true</RestorePackages>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BtmI2p.BitMoneyClient.Gui.BitMoneyClientProgram</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icons\banknotes.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy, Version=1.0.4.16035, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\LinFu.DynamicProxy.OfficialRelease.1.0.5\lib\net\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Nito.AsyncEx, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\NLog.3.2.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Forms, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Rx-WinForms.2.2.5\lib\net45\System.Reactive.Windows.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit.assert, Version=2.0.0.2929, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\xunit.assert.2.0.0\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ZedGraph">
+      <HintPath>..\..\..\..\ExternalLibs\zedgraph_dll_v515\zedgraph_dll_v5.1.5\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Communication\Exchange\ExchangeClientModel.cs" />
+    <Compile Include="Communication\Exchange\ExchangeClientSettings.cs" />
+    <Compile Include="Communication\GlobalModel.cs" />
+    <Compile Include="Communication\JsonRpcServers\CommonRpcSettings.cs" />
+    <Compile Include="Communication\JsonRpcServers\LocalRpcServersManager.cs" />
+    <Compile Include="Communication\JsonRpcServers\Proxy\LocalRpcServersManager_Proxy.cs" />
+    <Compile Include="Communication\JsonRpcServers\Proxy\ProxyLocalJsonRpcApiImpl.cs" />
+    <Compile Include="Communication\JsonRpcServers\Proxy\ProxyLocalJsonRpcApiImpl_Obsolete.cs" />
+    <Compile Include="Communication\JsonRpcServers\Proxy\ProxyRpcSettings.cs" />
+    <Compile Include="Communication\JsonRpcServers\Wallet\LocalRpcServersManager_Wallet.cs" />
+    <Compile Include="Communication\JsonRpcServers\Wallet\WalletLocalJsonRpcApiImpl.cs" />
+    <Compile Include="Communication\JsonRpcServers\Wallet\WalletLocalJsonRpcApiImpl_Obsolete.cs" />
+    <Compile Include="Communication\JsonRpcServers\Wallet\WalletRpcSettings.cs" />
+    <Compile Include="Communication\Messages\MessageClientMessageHistory.cs" />
+    <Compile Include="Communication\Wallet\WalletTransferHistory.cs" />
+    <Compile Include="Forms\Exchange\ExchangeChartCandlesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeChartCandlesForm.Designer.cs">
+      <DependentUpon>ExchangeChartCandlesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeCurrencyListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeCurrencyListForm.Designer.cs">
+      <DependentUpon>ExchangeCurrencyListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeDepositListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeDepositListForm.Designer.cs">
+      <DependentUpon>ExchangeDepositListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeDepthOfMarketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeDepthOfMarketForm.Designer.cs">
+      <DependentUpon>ExchangeDepthOfMarketForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangePaymentDetailsEditOrShowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangePaymentDetailsEditOrShowForm.Designer.cs">
+      <DependentUpon>ExchangePaymentDetailsEditOrShowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeTradeListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeTradeListForm.Designer.cs">
+      <DependentUpon>ExchangeTradeListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeOrderListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeOrderListForm.Designer.cs">
+      <DependentUpon>ExchangeOrderListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeSecurityListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeSecurityListForm.Designer.cs">
+      <DependentUpon>ExchangeSecurityListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeWithdrawListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeWithdrawListForm.Designer.cs">
+      <DependentUpon>ExchangeWithdrawListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\Exchange_EditObjectForm_Classes.cs" />
+    <Compile Include="Forms\Exchange\MainForm\MainForm_ExchangeHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\MainForm\MainForm_ExchangeServerLocStrings.cs" />
+    <Compile Include="Forms\Exchange\ExchangeNewOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\ExchangeNewOrderForm.Designer.cs">
+      <DependentUpon>ExchangeNewOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\MainForm\MainForm_ExchangeSubscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\MainForm\MainForm_InitExchangeModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\RegisterExchangeClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\RegisterExchangeClientForm.Designer.cs">
+      <DependentUpon>RegisterExchangeClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\ChangePasswordTemplate.cs" />
+    <Compile Include="Forms\MainForm\ClientGuiMainFormLocStrings.cs" />
+    <Compile Include="Forms\MainForm\JsonPrcServerSettings\EditJsonRpcServersSettingsForm_LocStrings.cs" />
+    <Compile Include="Forms\Message\MainForm\MainForm_ConnectMessageSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\MainForm\MainForm_InitMessageClientView.cs" />
+    <Compile Include="Forms\Message\MainForm\MainForm_MessageServerLocStrings.cs" />
+    <Compile Include="Forms\MiningLocal\MainForm\MainForm_InitMiningManagerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MiningLocal\MainForm\MainForm_MiningManagerHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mining\MainForm\MainForm_InitMiningModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mining\MainForm\MainForm_InitMiningView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mining\MainForm\MainForm_MiningHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MiningLocal\MainForm\MainForm_MiningManagerSubscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mining\MainForm\MainForm_MiningServerLocStringscs.cs" />
+    <Compile Include="Forms\Mining\MainForm\MainForm_MiningSubscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Communication\Mining\MiningClientModel.cs" />
+    <Compile Include="Communication\Mining\MiningClientSettings.cs" />
+    <Compile Include="Forms\Proxy\MainForm\MainForm_ProxyHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Proxy\MainForm\MainForm_ProxyServerLocStrings.cs" />
+    <Compile Include="Forms\Proxy\MainForm\MainFrom_InitProxyModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\MainForm\MainForm_InitMessageClientModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\MainForm\MainForm_MessageClientHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\MainForm\MainForm_MessageClientSubscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Communication\Messages\MessageClientModel.cs" />
+    <Compile Include="Communication\Messages\MessageClientSettings.cs" />
+    <Compile Include="Forms\Wallet\MainForm\MainForm_WalletHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\MainForm\MainForm_WalletServerLocStrings.cs" />
+    <Compile Include="Forms\Wallet\MainForm\MainForm_WalletSubscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Communication\Wallet\WalletModel.cs" />
+    <Compile Include="Communication\Wallet\WalletSettings.cs" />
+    <Compile Include="Forms\InputBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputBoxForm.Designer.cs">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\CommonSettings.cs" />
+    <Compile Include="Forms\MainForm\JsonPrcServerSettings\EditJsonRpcServerSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm\JsonPrcServerSettings\EditJsonRpcServerSettings.Designer.cs">
+      <DependentUpon>EditJsonRpcServerSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\MainFormModel.cs" />
+    <Compile Include="Forms\MiningLocal\EditMiningLocalSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MiningLocal\EditMiningLocalSettingsForm.Designer.cs">
+      <DependentUpon>EditMiningLocalSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mining\RegisterMiningClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mining\RegisterMiningClientForm.Designer.cs">
+      <DependentUpon>RegisterMiningClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProgressCancelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProgressCancelForm.Designer.cs">
+      <DependentUpon>ProgressCancelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectEnumValueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectEnumValueForm.Designer.cs">
+      <DependentUpon>SelectEnumValueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Message\AddContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\AddContactForm.Designer.cs">
+      <DependentUpon>AddContactForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Proxy\EditI2PSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Proxy\EditI2PSettingsForm.Designer.cs">
+      <DependentUpon>EditI2PSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EnterPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EnterPasswordForm.Designer.cs">
+      <DependentUpon>EnterPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\ClientGuiMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm\ClientGuiMainForm.Designer.cs">
+      <DependentUpon>ClientGuiMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Proxy\MainForm\MainForm_ProxySubscriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Communication\Proxy\ProxyModel.cs" />
+    <Compile Include="Forms\Message\EditMessageUserSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\EditMessageUserSettingsForm.Designer.cs">
+      <DependentUpon>EditMessageUserSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Message\RegisterMessageClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\RegisterMessageClientForm.Designer.cs">
+      <DependentUpon>RegisterMessageClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Message\SelectUserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\SelectUserProfile.Designer.cs">
+      <DependentUpon>SelectUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Message\ViewUserContactInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message\ViewUserContactInfo.Designer.cs">
+      <DependentUpon>ViewUserContactInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\EditWalletSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\EditWalletSettingsForm.Designer.cs">
+      <DependentUpon>EditWalletSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\ExternalPaymentProcessorSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\ExternalPaymentProcessorSettingsForm.Designer.cs">
+      <DependentUpon>ExternalPaymentProcessorSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\FullTransferHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\FullTransferHistoryForm.Designer.cs">
+      <DependentUpon>FullTransferHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\ProcessWalletInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\ProcessWalletInvoiceForm.Designer.cs">
+      <DependentUpon>ProcessWalletInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\RegisterWalletForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\RegisterWalletForm.Designer.cs">
+      <DependentUpon>RegisterWalletForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\SendFundsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\SendFundsForm.Designer.cs">
+      <DependentUpon>SendFundsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Wallet\ShowTransferInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Wallet\ShowTransferInfoForm.Designer.cs">
+      <DependentUpon>ShowTransferInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\LocalizationBaseData.cs" />
+    <Compile Include="Localization\LocalizationBase.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Communication\Proxy\ProxySettings.cs" />
+    <EmbeddedResource Include="Forms\Exchange\ExchangeChartCandlesForm.resx">
+      <DependentUpon>ExchangeChartCandlesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeCurrencyListForm.resx">
+      <DependentUpon>ExchangeCurrencyListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeDepositListForm.resx">
+      <DependentUpon>ExchangeDepositListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeDepthOfMarketForm.resx">
+      <DependentUpon>ExchangeDepthOfMarketForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangePaymentDetailsEditOrShowForm.resx">
+      <DependentUpon>ExchangePaymentDetailsEditOrShowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeTradeListForm.resx">
+      <DependentUpon>ExchangeTradeListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeOrderListForm.resx">
+      <DependentUpon>ExchangeOrderListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeSecurityListForm.resx">
+      <DependentUpon>ExchangeSecurityListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeNewOrderForm.resx">
+      <DependentUpon>ExchangeNewOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\ExchangeWithdrawListForm.resx">
+      <DependentUpon>ExchangeWithdrawListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\RegisterExchangeClientForm.resx">
+      <DependentUpon>RegisterExchangeClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputBoxForm.resx">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm\JsonPrcServerSettings\EditJsonRpcServerSettings.resx">
+      <DependentUpon>EditJsonRpcServerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MiningLocal\EditMiningLocalSettingsForm.resx">
+      <DependentUpon>EditMiningLocalSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProgressCancelForm.resx">
+      <DependentUpon>ProgressCancelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Proxy\EditI2PSettingsForm.resx">
+      <DependentUpon>EditI2PSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EnterPasswordForm.resx">
+      <DependentUpon>EnterPasswordForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm\ClientGuiMainForm.resx">
+      <DependentUpon>ClientGuiMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mining\RegisterMiningClientForm.resx">
+      <DependentUpon>RegisterMiningClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectEnumValueForm.resx">
+      <DependentUpon>SelectEnumValueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Message\AddContactForm.resx">
+      <DependentUpon>AddContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Message\EditMessageUserSettingsForm.resx">
+      <DependentUpon>EditMessageUserSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Message\RegisterMessageClientForm.resx">
+      <DependentUpon>RegisterMessageClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Message\SelectUserProfile.resx">
+      <DependentUpon>SelectUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Message\ViewUserContactInfo.resx">
+      <DependentUpon>ViewUserContactInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\EditWalletSettingsForm.resx">
+      <DependentUpon>EditWalletSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\ExternalPaymentProcessorSettingsForm.resx">
+      <DependentUpon>ExternalPaymentProcessorSettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\FullTransferHistoryForm.resx">
+      <DependentUpon>FullTransferHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\ProcessWalletInvoiceForm.resx">
+      <DependentUpon>ProcessWalletInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\RegisterWalletForm.resx">
+      <DependentUpon>RegisterWalletForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\SendFundsForm.resx">
+      <DependentUpon>SendFundsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Wallet\ShowTransferInfoForm.resx">
+      <DependentUpon>ShowTransferInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Icons\watch.png" />
+    <Content Include="Icons\banknotes.ico" />
+    <None Include="Icons\csv_text.png" />
+    <Content Include="Icons\keys.ico" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="run_on_mono.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ExternalLibs\csharp-sqlite_3_7_7_1_71\Community.CsharpSqlite.SQLiteClient\Community.CsharpSqlite.SQLiteClient.csproj">
+      <Project>{7bc68e61-c64c-488c-975f-1e2248383b80}</Project>
+      <Name>Community.CsharpSqlite.SQLiteClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\ExternalLibs\csharp-sqlite_3_7_7_1_71\Community.CsharpSqlite\Community.CsharpSqlite.csproj">
+      <Project>{f1653f20-d47d-4f29-8c55-3c835542af5f}</Project>
+      <Name>Community.CsharpSqlite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\ExternalLibs\Newtonsoft.Json\Newtonsoft.Json.csproj">
+      <Project>{eeea67f9-9089-481d-a4dc-0966dec9fd7d}</Project>
+      <Name>Newtonsoft.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\AesHelper\Src\AesHelper.csproj">
+      <Project>{63579773-0a48-4c52-82c3-26d3bc7909f8}</Project>
+      <Name>AesHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\BasicAuthHttpJsonRpcLib\Src\BasicAuthHttpJsonRpcClient\BasicAuthHttpJsonRpcClient.csproj">
+      <Project>{a37f4145-8c4c-4874-af3f-0406ee174ace}</Project>
+      <Name>BasicAuthHttpJsonRpcClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\BasicAuthHttpJsonRpcLib\Src\BasicAuthHttpJsonRpcServer\BasicAuthHttpJsonRpcServer.csproj">
+      <Project>{87131ba6-ebaa-48da-8ae0-d36b9dfd4e1a}</Project>
+      <Name>BasicAuthHttpJsonRpcServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\BtmGeneralClientInterfacesLib\Src\ExternalAppsApi\BitMoneyExternalAppsApi.csproj">
+      <Project>{567a28ad-b732-442f-8ae1-062b420d9ab5}</Project>
+      <Name>BitMoneyExternalAppsApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\BtmGeneralClientInterfacesLib\Src\BtmGeneralClientInterfaces\BitMoneyClientInterfaces.csproj">
+      <Project>{55c6cbc8-587e-4b84-aad1-3113465ea64c}</Project>
+      <Name>BitMoneyClientInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\BtmGeneralClientInterfacesLib\Src\ComputableTaskInterfaces\ComputableTaskInterfaces.csproj">
+      <Project>{3c4372ea-222f-49d4-a348-83c4c26e0aed}</Project>
+      <Name>ComputableTaskInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\CryptFileLib\Src\CryptFileLib.csproj">
+      <Project>{6f676d31-19fa-44e1-ae53-ff697ccbad1b}</Project>
+      <Name>CryptFileLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\DapperSqlCrudExtensionsLib\Src\Dapper.SqlCrudExtensions.Base\Dapper.SqlCrudExtensions.Base.csproj">
+      <Project>{b51f76cf-e832-49a9-91cc-ae6946390ae9}</Project>
+      <Name>Dapper.SqlCrudExtensions.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\DapperSqlCrudExtensionsLib\Src\Dapper.SqlCrudExtensions.Sqlite\Dapper.SqlCrudExtensions.Sqlite.csproj">
+      <Project>{c23a62b5-9163-42e7-9362-2bcc86dc71ac}</Project>
+      <Name>Dapper.SqlCrudExtensions.Sqlite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\JsonRpcProcessors\Src\JsonClientProcessor\JsonRpcClientProcessor.csproj">
+      <Project>{f8108214-83d0-44a3-a97f-c1f46a1f9752}</Project>
+      <Name>JsonRpcClientProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\LightCertificatesLib\Src\LightCertificatesLib.csproj">
+      <Project>{2796bb6b-5d9c-4915-9852-a6f311bb1a82}</Project>
+      <Name>LightCertificatesLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\MiscClientFormsLib\Src\MiscClientForms.csproj">
+      <Project>{c05b0d66-7a61-4024-851b-0ec45e47db84}</Project>
+      <Name>MiscClientForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\MiscUtils\Src\MiscUtils.csproj">
+      <Project>{11b3e9f3-d8a7-420e-a5c3-a2cd99fb232e}</Project>
+      <Name>MiscUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\MyFileManagerLib\Src\MyFileManagerClient\MyFileManagerClient.csproj">
+      <Project>{a9fe4dd4-d8d0-4496-b456-d48eb38dace7}</Project>
+      <Name>MyFileManagerClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\MyNotifyPropertyChangedLib\Src\MyNotifyPropertyChanged.Winforms\MyNotifyPropertyChanged.Winforms.csproj">
+      <Project>{202dd511-5e25-4247-b8ee-90fc5c0165a0}</Project>
+      <Name>MyNotifyPropertyChanged.Winforms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\MyNotifyPropertyChangedLib\Src\MyNotifyPropertyChanged\MyNotifyPropertyChanged.csproj">
+      <Project>{dd9793ae-5762-4344-9788-6ae48949d116}</Project>
+      <Name>MyNotifyPropertyChanged</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\MyBinDiffLib\Src\MyBinDiff.csproj">
+      <Project>{b8456a03-63b2-48b7-814b-856362789d11}</Project>
+      <Name>MyBinDiff</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\ObjectStateLib\Src\ObjectStateLib.csproj">
+      <Project>{0a5cbe42-25ff-4691-833e-cb798e3a674f}</Project>
+      <Name>ObjectStateLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\SamHelperLib\Src\JsonRpcSamI2pClient\JsonRpcSamI2pClient.csproj">
+      <Project>{43797558-11e6-4347-a1ad-31ac3c51284e}</Project>
+      <Name>JsonRpcSamI2pClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\SamHelperLib\Src\SamHelper\SamHelper.csproj">
+      <Project>{0aa99f17-bbe3-4af3-83bb-42be66b081b3}</Project>
+      <Name>SamHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libs\BtmGeneralClientLib\Src\BitMoneyClientLib.csproj">
+      <Project>{ed09bdfe-118f-4d5d-bebd-8f73d5f4e967}</Project>
+      <Name>BitMoneyClientLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Communication\MiningManager\" />
+    <Folder Include="Updater\Archives\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath>$(SolutionDir)\.build</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
+  <Target Name="BeforeBuild">
+    <MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(TargetDir)" />
+  </Target>
+  <Target Name="AfterBuild" Condition="$(Configuration)==Release">
+    <!-- ILRepack -->
+    <CreateItem Include="@(ReferenceCopyLocalPaths)" Condition="'%(Extension)'=='.dll'">
+      <Output ItemName="AssembliesToMerge" TaskParameter="Include" />
+    </CreateItem>
+    <PropertyGroup>
+      <ILRepackPath>ILRepack.exe</ILRepackPath>
+      <MergedExePath>bin\ReleaseMerged\</MergedExePath>
+    </PropertyGroup>
+    <MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(MergedExePath)" />
+    <Exec Command="$(ILRepackPath) /union /ndebug /parallel /target:winexe /out:$(MergedExePath)\$(AssemblyName).exe $(OutputPath)\$(AssemblyName).exe @(AssembliesToMerge, ' ')" />
+    <ItemGroup>
+      <CopyToReleaseMerged Include="$(OutputPath)\run_on_mono.sh" />
+      <CopyToReleaseMerged Include="$(OutputPath)\NLog.config" />
+    </ItemGroup>
+    <Copy SourceFiles="@(CopyToReleaseMerged)" DestinationFolder="$(MergedExePath)" />
+    <!-- Copy updater files -->
+    <ItemGroup>
+      <UpdaterReleaseFiles Include="..\..\BitMoneyUpdater\Src\bin\ReleaseMerged\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(UpdaterReleaseFiles)" DestinationFolder="$(MergedExePath)Updater" />
+    <!-- -->
+    <CreateItem Include="$(MergedExePath)*.pdb;$(MergedExePath)*.dll;$(MergedExePath)*.exe;$(MergedExePath)*.sh;$(MergedExePath)*.config">
+      <Output TaskParameter="Include" ItemName="OutputPathPdbItems" />
+    </CreateItem>
+    <!-- <Exec Command="echo @(OutputPathPdbItems)" />-->
+    <!-- -->
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyVersionItems" />
+    </GetAssemblyIdentity>
+    <CreateProperty Value="%(AssemblyVersionItems.Version)">
+      <Output TaskParameter="Value" PropertyName="AssemblyVersion" />
+    </CreateProperty>
+    <Exec Command="echo Version = $(AssemblyVersion)" />
+    <!-- -->
+    <PropertyGroup>
+      <UpdateZipPackagePath>bin\ReleaseUpdatePackage\</UpdateZipPackagePath>
+    </PropertyGroup>
+    <!--<Exec Command="echo $(UpdateZipPackagePath)$(AssemblyVersion).zip"/>-->
+    <Zip ZipFileName="$(UpdateZipPackagePath)$(AssemblyVersion).zip" WorkingDirectory="$(MergedExePath)" Files="@(OutputPathPdbItems)" ZipLevel="0" />
+    <!-- -->
+    <ItemGroup>
+      <UpdateZipPackageCopies Include="$(MergedExePath)Updater\Archives" />
+    </ItemGroup>
+    <Copy SourceFiles="$(UpdateZipPackagePath)$(AssemblyVersion).zip" DestinationFolder="%(UpdateZipPackageCopies.Identity)" />
+    <!-- Zip whole release folder -->
+    <ItemGroup>
+      <ReleaseFilesToCopy Include="$(MergedExePath)**\*.*" />
+    </ItemGroup>
+    <Zip ZipFileName="bin\ReleaseFullZip\BitMoneyGui_$(AssemblyVersion).zip" WorkingDirectory="$(MergedExePath)" Files="@(ReleaseFilesToCopy)" ZipLevel="9" />
+  </Target>
+  <Import Project="$(SolutionDir)\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets" Condition="Exists('$(SolutionDir)\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" />
+  <Import Project="$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets')" />
+</Project>
